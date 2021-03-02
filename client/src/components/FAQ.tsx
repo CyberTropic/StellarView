@@ -4,14 +4,11 @@ import QGISModel from './style/Images/QGISModel.png';
 import WeatherEstimation from './style/Images/Weather-Estimation-Test.png';
 import ParkMapNA from './style/Images/ParkMapNA.png';
 import lightPolMapDemo from './style/Images/lightPolMapDemo.png';
-import StarBackgroundLess from './StarBackgroundLess';
 
-const FAQ = (props: any) => (
+const FAQ = () => (
   <FAQStyle>
     <h1 className="FAQHeader">FAQ</h1>
-
     <div className="FAQ_Sections">
-      <StarBackgroundLess />
       <ol>
         <li>
           <a href="#who">Who are we?</a>
@@ -58,14 +55,14 @@ const FAQ = (props: any) => (
           McMaster University's Computer Science department in Hamilton,
           Ontario. Inspired by Evan Reaume, Stellargaze hopes to simplify the
           stargazing process. The front-end and back-end was fully implemented
-          by both{' '}
+          by both
           <a href="http://www.dustinjurkaulionis.com" target="_blank">
             Dustin Jurkaulionis
-          </a>{' '}
-          and{' '}
+          </a>
+          and
           <a href="http://www.vladfalach.com" target="_blank">
             Vlad Falach
-          </a>{' '}
+          </a>
           over the Summer of 2019 as their first full-scale web application. It
           was designed by all three.
         </span>
@@ -73,7 +70,6 @@ const FAQ = (props: any) => (
       <h1 id="why">Why was this made?</h1>
       <div className="Background">
         <span>
-          {' '}
           Humans have a special connection to the sky. There are roughly 5000
           stars visible at night, and such stars are not so easy to spot due to
           light pollution and our migration into cities. This project was made
@@ -93,7 +89,7 @@ const FAQ = (props: any) => (
               We analyze a satellite image provided by the Earth Observations
               Group (EOG) at NOAA/NCEI. This Day/Night Band image captures the
               average radiance values of North America, Australia, and New
-              Zealand. The pixel values we extract correspond to a number on the{' '}
+              Zealand. The pixel values we extract correspond to a number on the
               <a
                 href="https://en.wikipedia.org/wiki/Bortle_scale"
                 target="_blank"
@@ -101,7 +97,7 @@ const FAQ = (props: any) => (
                 Bortle scale
               </a>
               , which gives an approximate measure of the night sky's brightness
-              at a particular location.{' '}
+              at a particular location.
             </li>
             <li>
               We then find the nearest parks relative to the user with a Bortle
@@ -109,7 +105,7 @@ const FAQ = (props: any) => (
               zone. These parks are available to us using Open Street Maps and a
               database. We store only the parks below a certain radiance value,
               corresponding to a Bortle class. Thus, parks located in a densely
-              populated area with lots of light pollution are not stored.{' '}
+              populated area with lots of light pollution are not stored.
             </li>
             <li>
               Parks within 140km of the user in lower light-pollution zones are
@@ -178,7 +174,7 @@ const FAQ = (props: any) => (
               persists even if our server shuts down.
             </p>
             <p>
-              Your password is encrypted using{' '}
+              Your password is encrypted using
               <a target="_blank" href="https://en.wikipedia.org/wiki/Bcrypt">
                 Bcrypt
               </a>
@@ -201,7 +197,7 @@ const FAQ = (props: any) => (
           <p>
             An invaluable tool in creating the database was the QGIS process
             toolkit. The process began by collecting data on all objects labeled
-            as <i>parks</i> on OpenStreetMaps. This was done via the{' '}
+            as <i>parks</i> on OpenStreetMaps. This was done via the
             <a href="https://github.com/3liz/QuickOSM">QuickOSM</a> plugin,
             which allowed this process to be automatic. The process had to be
             run on each state/province sized area in turn, so it's wrapped in
@@ -247,11 +243,11 @@ const FAQ = (props: any) => (
             weather, moon phase, distance, park reviews, etc.
           </p>
           <p>
-            Weather forecast data is obtained from{' '}
+            Weather forecast data is obtained from
             <a href="https://openweathermap.org/">OpenWeather</a>. Due to the
             data limitations and the wide area required for forecasting, doing
             forecast requests for <i>each park</i> individually was infeasible,
-            as well as not financially viable. As a result, a{' '}
+            as well as not financially viable. As a result, a
             <i>k-means clustering algorithm</i> was used to cluster nearby parks
             together, since all parks in an area could share a forecast. After
             some testing, there was not a significant difference between using
@@ -324,7 +320,7 @@ const FAQ = (props: any) => (
               if there are parks above a score of 75%.
             </li>
             <li>
-              Refactoring the{' '}
+              Refactoring the
               <a
                 target="_blank"
                 href="https://github.com/CyberTropic/StellarGaze"
@@ -352,7 +348,7 @@ const FAQ = (props: any) => (
           <ul>
             <li>
               Light pollution data provided by the VIIRS Day/Night Band
-              Nighttime Lights images via the{' '}
+              Nighttime Lights images via the
               <a
                 target="_blank"
                 href="https://eogdata.mines.edu/download_dnb_composites.html"
@@ -363,32 +359,32 @@ const FAQ = (props: any) => (
             VIIRS Day/Night Band Nighttime Lights
             <li>
               Band value numbers for the radiance corresponding to a Bortle
-              number provided by Jurij Stare of{' '}
+              number provided by Jurij Stare of
               <a target="_blank" href="https://www.lightpollutionmap.info/">
                 lightpollutionmap.info
               </a>
             </li>
             <li>
-              Moonrise/moonset and sunrise/sunset data provided by{' '}
+              Moonrise/moonset and sunrise/sunset data provided by
               <a target="_blank" href="http://suncalc.net">
                 Suncalc
               </a>
             </li>
             <li>
-              OpenStreetMap data gathered via{' '}
+              OpenStreetMap data gathered via
               <a target="_blank" href="https://github.com/3liz/QuickOSM">
                 QuickOSM
-              </a>{' '}
+              </a>
               plugin.
             </li>
             <li>
-              Telescope animation in homepage adapted based on a Codepen by{' '}
+              Telescope animation in homepage adapted based on a Codepen by
               <a target="_blank" href="https://codepen.io/littleginger">
                 @littleginger
               </a>
             </li>
             <li>
-              404 page astronaut animation adapted based on a Codepen by{' '}
+              404 page astronaut animation adapted based on a Codepen by
               <a target="_blank" href="https://codepen.io/hellochad">
                 @hellochad
               </a>
@@ -402,8 +398,8 @@ const FAQ = (props: any) => (
           Are you a sidewalk astronomer? Casual observer of the skies?
           Professional? A human? We'd love to hear your feedback! Our algorithm
           is continuously being improved so any advice and/or feedback would be
-          greatly appreciated. Please email us at{' '}
-          <a href="mailto:dev@stellargaze.com">dev@stellargaze.com</a> and{' '}
+          greatly appreciated. Please email us at
+          <a href="mailto:dev@stellargaze.com">dev@stellargaze.com</a> and
           <a target="_blank" href="https://github.com/CyberTropic/StellarGaze">
             visit the repo
           </a>
@@ -423,11 +419,8 @@ const FAQStyle = styled.div`
     font-weight: 400;
 
     ol {
-      /* list-style: none; */
       text-align: left;
       color: ${(props) => props.theme.white};
-      /* padding: 0;
-			list-style-type: none; */
     }
     a {
       color: ${(props) => props.theme.white};
