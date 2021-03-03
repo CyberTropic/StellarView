@@ -81,7 +81,7 @@ class Tutorial extends Component {
   openModal = () => {
     notifyTutorialModalIsOpen();
     this.props.history.push(
-      `${window.location.pathname}${window.location.search}#tutorial`
+      `${window.location.pathname}${window.location.search}#tutorial`,
     );
     this.setState({ ...this.state, modalIsOpen: true });
   };
@@ -95,7 +95,7 @@ class Tutorial extends Component {
     notifyTutorialModalIsClosed();
     this.props.history.push(
       `${window.location.pathname}${window.location.search}`,
-      null
+      null,
     );
     this.setState({ modalIsOpen: false, errorDB: false });
     document.body.style.overflow = 'visible';
@@ -324,8 +324,6 @@ class Tutorial extends Component {
 
 export default withRouter(Tutorial);
 
-/////////////////////////////////
-
 const customStyles = {
   overlay: {
     position: 'fixed',
@@ -353,15 +351,12 @@ const customStyles = {
   },
 };
 
-//style the "modal" here - don't worry about the ccontent shit
 const TutorialStyle = styled.div`
   max-width: 600px;
   background: ${(props) => props.theme.moonBackground};
   border-radius: 8px;
-  /* padding: 20px; */
   text-align: left;
   font-size: 15px;
-  /* padding: 20px; */
   font-family: 'Lato', sans-serif;
   color: ${(props) => props.theme.white};
   font-weight: 400;

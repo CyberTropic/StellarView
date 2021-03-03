@@ -1,44 +1,43 @@
-import React, { Component } from 'react';
+import React from 'react';
 import DrawerToggleButton from './DrawerToggleButton';
 import styled from 'styled-components';
-import { AuthProvider, AuthConsumer } from '../AuthContext';
+
 import { withRouter, Link } from 'react-router-dom';
-import Login from '../Login';
-import axios from 'axios';
-import Register from '../Register';
-import FAQ from '../FAQ';
+
 import logo from '../style/Media/StellarStarLogo.svg';
 import SVG from 'react-inlinesvg';
+import Tutorial from '../Tutorial';
 
 const Toolbar = () => {
   return (
     <ToolbarStyle>
-      <div className="toolbar__center">
-        <nav className="toolbar__navigation">
-          <div className="toolbarLogo">
-            <Link to="/home">
-              <SVG src={logo}></SVG>
-            </Link>
-          </div>
+      <nav className="toolbar__navigation">
+        {/* <DrawerToggleButton click={this.props.drawerClickHandler} /> */}
+        <DrawerToggleButton />
 
-          <div className="toolbar_navigation-items">
-            <ul>
-              <li>
-                <Link to="/FAQ">
-                  <div className="toolbarLink">How it works</div>
-                </Link>
-              </li>
-            </ul>
-            <ul>
-              <li>
-                <Link to="/FAQ">
-                  <div className="toolbarLink faq">FAQ</div>
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
+        <div className="toolbarLogo">
+          <Link to="/home">
+            <SVG src={logo}></SVG>
+          </Link>
+        </div>
+
+        <div className="toolbar_navigation-items">
+          <ul>
+            <li>
+              <div className="toolbarLink">
+                <Tutorial>How it works</Tutorial>
+              </div>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <Link to="/FAQ">
+                <div className="toolbarLink faq">FAQ</div>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </ToolbarStyle>
   );
 };
@@ -47,13 +46,6 @@ export default withRouter(Toolbar);
 
 const ToolbarStyle = styled.header`
   width: 100%;
-  margin: 0.3rem 0px 0px 0px;
-  left: 0;
-
-  @media screen and (min-width: 480px) {
-    margin: 0.3rem 0px 0px 0px;
-  }
-
   .toolbar__center {
     display: block;
 
@@ -81,6 +73,10 @@ const ToolbarStyle = styled.header`
       padding: 0px 6.5% 30px 6.5%;
       margin: 2rem auto 0 auto;
     }
+  }
+
+  @media screen and (min-width: 480px) {
+    margin: 0.3rem 0px 0px 0px;
   }
 
   .toolbarLogo {

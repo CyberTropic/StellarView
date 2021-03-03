@@ -102,17 +102,7 @@ class App extends Component {
   }
 }
 
-//IMPORTANT TO EXPORT!
 export default App;
-
-////////////////////////////////////////////////////////////////
-
-// font-family: 'Open Sans', sans-serif;
-// font-family: 'Merriweather Sans', sans-serif;
-// font-family: 'IBM Plex Mono', monospace;
-// font-family: 'IBM Plex Sans', sans-serif;
-//'Yeseva One', cursive;
-//font-family: 'Barlow', sans-serif;
 
 const SiteStyle = styled.div`
   display: flex;

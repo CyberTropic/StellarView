@@ -222,7 +222,7 @@ class BaseMainComponent extends Component {
                 response.data.moonFraction,
                 response.data.parks[i].weather.humidity / 100,
                 response.data.parks[i].weather.clouds / 100,
-                response.data.parks[i].light_pol
+                response.data.parks[i].light_pol,
               );
               response.data.parks[i].score = tempScore.finalScore;
               response.data.parks[i].scoreBreakdown = tempScore;
@@ -241,7 +241,7 @@ class BaseMainComponent extends Component {
             response.data.timestamp = d.getTime();
             sessionStorage.setItem(
               JSON.stringify(reqData),
-              JSON.stringify(response.data)
+              JSON.stringify(response.data),
             );
           } else {
             this.setState({ parks: [], isFetchingParks: false });
@@ -310,7 +310,7 @@ class BaseMainComponent extends Component {
   sortParksDist = () => {
     let parksArray = this.state.parks;
     parksArray.sort((a, b) =>
-      a.distance > b.distance ? 1 : b.distance > a.distance ? -1 : 0
+      a.distance > b.distance ? 1 : b.distance > a.distance ? -1 : 0,
     );
     this.setState({ ...this.state, parks: parksArray, sortedBy: 'dist' });
   };
@@ -318,7 +318,7 @@ class BaseMainComponent extends Component {
   sortParksScore = () => {
     let parksArray = this.state.parks;
     parksArray.sort((a, b) =>
-      a.score > b.score ? -1 : b.score > a.score ? 1 : 0
+      a.score > b.score ? -1 : b.score > a.score ? 1 : 0,
     );
     this.setState({ ...this.state, parks: parksArray, sortedBy: 'score' });
   };
@@ -381,9 +381,7 @@ class BaseMainComponent extends Component {
       <LandingPageStyle>
         <TelescopeCircle />
 
-        <span className="tutorial">
-          <Tutorial>View Tutorial</Tutorial>
-        </span>
+        <span className="tutorial"></span>
       </LandingPageStyle>
     );
   };
