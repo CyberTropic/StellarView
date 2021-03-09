@@ -3,7 +3,6 @@ import React from 'react';
 import { AuthProvider, AuthConsumer } from './AuthContext';
 import App from '../App';
 import axios from 'axios';
-import Reviews from './Reviews';
 
 export class Auth extends React.Component {
   constructor(props) {

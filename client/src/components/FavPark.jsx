@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { AuthConsumer } from './AuthContext';
-import Login from './Login';
 import styled from 'styled-components';
 
 class BaseFavPark extends Component {
@@ -108,9 +107,10 @@ class BaseFavPark extends Component {
       }
     } else {
       return (
-        <Login handleLogin={this.props.handleLogin}>
-          <i className="fas fa-heart fa-2x UnfavedHeart" />
-        </Login>
+        <></>
+        // <Login handleLogin={this.props.handleLogin}>
+        //   <i className="fas fa-heart fa-2x UnfavedHeart" />
+        // </Login>
       );
     }
   };

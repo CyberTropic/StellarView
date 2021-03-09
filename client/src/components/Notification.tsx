@@ -30,7 +30,7 @@ export default class Notification extends Component {
         setTimeout(() => {
           this.setState({ show: false });
         }, 4000);
-      }
+      },
     );
   };
 
@@ -44,17 +44,15 @@ export default class Notification extends Component {
 }
 
 const Container = styled.div`
-	background-color: ${(props) => props.theme.cardDark};
-	color: ${(props) => props.theme.prettyDark};
-	font-family: "Lato", sans-serif;
-	font-size: 18px;
-	font-weight: 500px;
-	border-radius: 2px;
-	position: absolute;
-	/* display: ${(props) => (props.show ? 'initial' : 'none')}; */
-	top: ${(props) => (props.show ? '20vh' : '-100px')};
-	left: 20px;
-	padding: 16px;
-	z-index: 999;
-	/* transition: left 1.0s ease; */
+  background-color: ${(props) => props.theme.cardDark};
+  color: ${(props) => props.theme.prettyDark};
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  font-weight: 500px;
+  border-radius: 2px;
+  position: absolute;
+  top: ${(props) => (props.show ? '20vh' : '-100px')};
+  left: 20px;
+  padding: 16px;
+  z-index: 999;
 `;

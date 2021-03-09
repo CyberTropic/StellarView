@@ -202,56 +202,53 @@ ParkCard.defaultProps = {
 export default ParkCard;
 
 const ParkCardWrapper = styled.div`
-	background: ${(props) => props.theme.cardDark};
-	padding-bottom: 10px;
-	margin-bottom: 1rem;
-	position: relative;
+  background: ${(props) => props.theme.cardDark};
+  padding-bottom: 10px;
+  margin-bottom: 1rem;
+  position: relative;
 
-	/* min-width: 320px; */
-	cursor: pointer;
+  /* min-width: 320px; */
+  cursor: pointer;
 
-	:hover {
-		background: ${(props) => props.theme.cardLight};
-		/* background: linear-gradient(
+  :hover {
+    background: ${(props) => props.theme.cardLight};
+    /* background: linear-gradient(
 			0deg,
 			${(props) => props.theme.cardLight} 70%,
 			${(props) => props.theme.cardHeaderHover} 70%
 		); */
-	}
-	:active {
-		background: ${(props) => props.theme.cardDark};
-		/* background: linear-gradient(
+  }
+  :active {
+    background: ${(props) => props.theme.cardDark};
+    /* background: linear-gradient(
 			0deg,
 			${(props) => props.theme.cardDark} 70%,
 			${(props) => props.theme.cardHeader} 70%
 		); */
-	}
+  }
 
-	@media screen and (min-width: 320px) {
-		padding-bottom: 10px;
-	}
+  @media screen and (min-width: 320px) {
+    padding-bottom: 10px;
+  }
 
-	@media screen and (min-width: 355px) {
-		border-radius: 20px;
-		margin: 0 10px 15px 10px;
-	}
+  @media screen and (min-width: 355px) {
+    border-radius: 20px;
+    margin: 0 10px 15px 10px;
+  }
 
-	@media screen and (min-width: 400px) {
-		margin: 0 10px 15px 10px;
-	}
+  @media screen and (min-width: 400px) {
+    margin: 0 10px 15px 10px;
+  }
 
+  @media screen and (min-width: 480px) {
+    padding-bottom: 0px;
+  }
 
+  @media screen and (min-width: 525px) {
+    border-radius: 20px;
+  }
 
-	@media screen and (min-width: 480px) {
-		padding-bottom: 0px;
-	}
-
-	@media screen and (min-width: 525px) {
-		border-radius: 20px;
-	}
-
-	
-	/* @media screen and (min-width: 685px) {
+  /* @media screen and (min-width: 685px) {
 		padding-left: 7vw;
 		padding-right: 7vw;
 	}
@@ -274,17 +271,15 @@ const ParkCardWrapper = styled.div`
 		padding-left: 1vw;
 		padding-right: 1vw;
 	} */
-	@media screen and (min-width: 1292px) {
-		padding-bottom: 0px;
-	}
+  @media screen and (min-width: 1292px) {
+    padding-bottom: 0px;
+  }
 
-	@media screen and (min-width: 1460px) {
-		
-	}
+  @media screen and (min-width: 1460px) {
+  }
 
-	@media screen and (min-width: 1600px) {
-		
-	} 
+  @media screen and (min-width: 1600px) {
+  }
 `;
 
 const CardStyle = styled.div`
@@ -315,7 +310,6 @@ const CardStyle = styled.div`
     grid-area: ParkHeader;
     grid-template-columns: 1fr 0.2fr;
     grid-template-areas: 'ParkTitle CarIcon';
-    /* min-height: 13vh; */
     background: ${(props) => props.theme.green};
     border-bottom: 5px solid #111414;
     padding: 13px 10px;

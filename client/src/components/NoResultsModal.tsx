@@ -3,10 +3,6 @@ import Modal from 'react-modal';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import ee from 'eventemitter3';
-import {
-  notifyResultsModalIsOpen,
-  notifyResultsModalIsClosed,
-} from './MainComponent';
 
 const emitter = new ee();
 
@@ -29,7 +25,7 @@ class NoResultsModal extends Component {
   openModal = () => {
     notifyResultsModalIsOpen();
     this.props.history.push(
-      `${window.location.pathname}${window.location.search}#no-results`
+      `${window.location.pathname}${window.location.search}#no-results`,
     );
     this.setState({ ...this.state, modalIsOpen: true });
   };
@@ -42,7 +38,7 @@ class NoResultsModal extends Component {
     notifyResultsModalIsClosed();
     this.props.history.push(
       `${window.location.pathname}${window.location.search}`,
-      null
+      null,
     );
     this.setState({ ...this.state, modalIsOpen: false });
     document.body.style.overflow = 'visible';
@@ -155,7 +151,7 @@ class NoResultsModal extends Component {
             <div className="whyExplanation">
               {this.renderMessage(
                 this.props.moonPhase,
-                JSON.parse(JSON.stringify(this.props.scoreBreakdown))
+                JSON.parse(JSON.stringify(this.props.scoreBreakdown)),
               )}
             </div>
             {/* <div>

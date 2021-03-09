@@ -1,13 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import StarBackgroundLess from './StarBackgroundLess';
 
 class NotFoundPage extends React.Component {
   render() {
     return (
       <NotFoundStyle>
-        <StarBackgroundLess />
         <div className="message">
           <h1>404</h1>
           <h3>

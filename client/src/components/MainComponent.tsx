@@ -10,55 +10,6 @@ import MoonComponent from './Moon';
 import { Spring, animated } from 'react-spring/renderprops';
 import { withRouter } from 'react-router-dom';
 import TelescopeCircle from './TelescopeCircle';
-import { notifyCloseModal } from './ParkMoreInfoModal';
-import { notifyCloseLoginModal } from './Login';
-import { notifyCloseRegisterModal } from './Register';
-import { notifyCloseTutorialModal } from './Tutorial';
-import { notifyCloseResultsModal } from './NoResultsModal';
-import Tutorial from './Tutorial';
-import ee from 'eventemitter3';
-
-const emitter = new ee();
-
-export const notifyInfoModalIsOpen = (msg) => {
-  emitter.emit('infoModalIsOpen', msg);
-};
-
-export const notifyInfoModalIsClosed = (msg) => {
-  emitter.emit('infoModalIsClosed', msg);
-};
-
-export const notifyLoginModalIsOpen = (msg) => {
-  emitter.emit('loginModalIsOpen', msg);
-};
-
-export const notifyLoginModalIsClosed = (msg) => {
-  emitter.emit('loginModalIsClosed', msg);
-};
-
-export const notifyRegisterModalIsOpen = (msg) => {
-  emitter.emit('registerModalIsOpen', msg);
-};
-
-export const notifyRegisterModalIsClosed = (msg) => {
-  emitter.emit('registerModalIsClosed', msg);
-};
-
-export const notifyTutorialModalIsOpen = (msg) => {
-  emitter.emit('tutorialModalIsOpen', msg);
-};
-
-export const notifyTutorialModalIsClosed = (msg) => {
-  emitter.emit('tutorialModalIsClosed', msg);
-};
-
-export const notifyResultsModalIsOpen = (msg) => {
-  emitter.emit('resultsModalIsOpen', msg);
-};
-
-export const notifyResultsModalIsClosed = (msg) => {
-  emitter.emit('resultsModalIsClosed', msg);
-};
 
 function linearScore(x, minX, maxX) {
   let y = 0;
@@ -123,55 +74,7 @@ class BaseMainComponent extends Component {
     this.googleMap = false;
     this.markers = {};
     this.noParksModalOpen = false;
-    emitter.on('infoModalIsOpen', (msg) => {
-      this.setState({ infoModalIsOpen: true });
-    });
-    emitter.on('infoModalIsClosed', () => {
-      this.setState({ infoModalIsOpen: false });
-    });
-    emitter.on('loginModalIsOpen', (msg) => {
-      this.setState({ loginModalIsOpen: true });
-    });
-    emitter.on('loginModalIsClosed', () => {
-      this.setState({ loginModalIsOpen: false });
-    });
-    emitter.on('registerModalIsOpen', (msg) => {
-      this.setState({ registerModalIsOpen: true });
-    });
-    emitter.on('registerModalIsClosed', () => {
-      this.setState({ registerModalIsOpen: false });
-    });
-    emitter.on('tutorialModalIsOpen', () => {
-      this.setState({ tutorialModalIsOpen: true });
-    });
-    emitter.on('tutorialModalIsClosed', () => {
-      this.setState({ tutorialModalIsOpen: false });
-    });
-    emitter.on('resultsModalIsOpen', () => {
-      this.setState({ resultsModalIsOpen: true });
-    });
-    emitter.on('resultsModalIsClosed', () => {
-      this.setState({ resultsModalIsOpen: false });
-    });
   }
-
-  componentDidUpdate = () => {
-    window.onpopstate = (e) => {
-      if (this.state.infoModalIsOpen) {
-        notifyCloseModal();
-      } else if (this.state.loginModalIsOpen) {
-        notifyCloseLoginModal();
-      } else if (this.state.registerModalIsOpen) {
-        notifyCloseRegisterModal();
-      } else if (this.state.tutorialModalIsOpen) {
-        notifyCloseTutorialModal();
-      } else if (this.state.resultsModalIsOpen) {
-        notifyCloseResultsModal();
-      } else {
-        notifyLoadQuery();
-      }
-    };
-  };
 
   handleMapLoaded = (googleMapActual) => {
     this.googleMap = googleMapActual;
@@ -380,8 +283,6 @@ class BaseMainComponent extends Component {
     return (
       <LandingPageStyle>
         <TelescopeCircle />
-
-        <span className="tutorial"></span>
       </LandingPageStyle>
     );
   };

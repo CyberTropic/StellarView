@@ -17,21 +17,13 @@ export default Footer;
 
 const FooterStyle = styled.div`
   width: 100%;
-
   font-family: Lato;
   align-items: center;
-
-  font-weight: 500;
   letter-spacing: 0.2em;
-
   color: ${(props) => props.theme.cardLight};
-  margin: 30px auto 15px auto;
+  margin-bottom: 15px;
   font-weight: 400;
   font-size: 11px;
-
-  .Contact {
-    grid-area: Contact;
-  }
 
   a {
     all: unset;

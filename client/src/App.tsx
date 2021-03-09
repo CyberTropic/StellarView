@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { AuthConsumer } from './components/AuthContext';
+import React from 'react';
 import MainComponent from './components/MainComponent';
 import {
   BrowserRouter as Router,
@@ -7,10 +6,7 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom';
-import Profile from './components/Profile';
-import ToolBar from './components/ToolBar/Toolbar';
-import SideDrawer from './components/ToolBar/SideDrawer';
-import Backdrop from './components/Backdrop/Backdrop';
+import ToolBar from './components/Toolbar';
 import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
 
@@ -21,86 +17,34 @@ import NotFoundPage from './components/NotFoundPage';
 import Notification from './components/Notification';
 
 const App = () => {
-  state = {
-    sideDrawerOpen: false,
-  };
-
-  //if sidedraweropen, save as false
-  drawerToggleClickHandler = () => {
-    this.setState((prevState) => {
-      return { sideDrawerOpen: !prevState.sideDrawerOpen };
-    });
-  };
-
-  sideDrawerLinkClickHandler = () => {
-    this.setState({ sideDrawerOpen: false });
-  };
-
-  backdropClickHandler = () => {
-    this.setState({ sideDrawerOpen: false });
-  };
-
-  render() {
-    let backdrop;
-    if (this.state.sideDrawerOpen) {
-      backdrop = <Backdrop click={this.backdropClickHandler} />;
-    }
-    //co
-    return (
-      <React.Fragment>
-        <Notification />
-        <ScrollUpButton />
-        <GlobalStyle />
-        <SiteStyle>
-          <div className="SiteContent">
-            <Router>
-              <ToolBar
-                drawerClickHandler={this.drawerToggleClickHandler}
-                handleLogoutState={this.props.handleLogoutState}
-                handleLogin={this.props.handleLogin}
+  return (
+    <React.Fragment>
+      <Notification />
+      <ScrollUpButton />
+      <GlobalStyle />
+      <SiteStyle>
+        <div className="SiteContent">
+          <Router>
+            <ToolBar />
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={() => {
+                  return <Redirect to="/home" />;
+                }}
               />
-              <SideDrawer
-                show={this.state.sideDrawerOpen}
-                close={this.sideDrawerLinkClickHandler}
-                handleLogoutState={this.props.handleLogoutState}
-                handleLogin={this.props.handleLogin}
-              />
-              {backdrop}
-              <Switch>
-                <Route
-                  path="/profile"
-                  render={() => (
-                    <AuthConsumer>
-                      {(authState) => {
-                        if (authState.isAuth !== null) {
-                          if (authState.isAuth === true) return <Profile />;
-                          else return <Redirect to="/" />;
-                        }
-                      }}
-                    </AuthConsumer>
-                  )}
-                />
-                <Route
-                  exact
-                  path="/"
-                  render={() => {
-                    return <Redirect to="/home" />;
-                  }}
-                />
-
-                <Route path={['/home', '/search']} component={MainComponent} />
-                <Route path="/FAQ" component={FAQ} />
-
-                <Route path="*" component={NotFoundPage} />
-              </Switch>
-            </Router>
-          </div>
-          <Footer />
-        </SiteStyle>
-      </React.Fragment>
-    );
-  }
-}
+              <Route path={['/home', '/search']} component={MainComponent} />
+              <Route path="/FAQ" component={FAQ} />
+              <Route path="*" component={NotFoundPage} />
+            </Switch>
+          </Router>
+        </div>
+        <Footer />
+      </SiteStyle>
+    </React.Fragment>
+  );
+};
 
 export default App;
 
@@ -138,7 +82,9 @@ body{
   background: rgb(4,4,4);
   background: linear-gradient(90deg, rgba(4,4,4,1) 0%, rgba(19,19,19,1) 100%);
 
-
+#root{
+  background-color: #000;
+}
 
 
 }

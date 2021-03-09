@@ -78,7 +78,7 @@ class BaseParkForm extends Component {
           //SetState callback
           () => {
             this.onSubmit();
-          }
+          },
         );
       }
     }
@@ -106,13 +106,13 @@ class BaseParkForm extends Component {
         //This can be avoided by redirecting the call through NODE
         `${'https://cors-anywhere.herokuapp.com/'}http://nominatim.openstreetmap.org/search?format=json&q=${
           this.state.reqData.placeName
-        }`
+        }`,
       )
       .then(({ data }) => {
         if (window.google) {
           var latLng = new window.google.maps.LatLng(
             parseFloat(data[0].lat),
-            parseFloat(data[0].lon)
+            parseFloat(data[0].lon),
           ); //Makes a latlng
           this.props.googleMap.panTo(latLng); //Make map global
         }
@@ -125,7 +125,7 @@ class BaseParkForm extends Component {
               lng: parseFloat(data[0].lon),
             },
           },
-          () => this.onSubmit()
+          () => this.onSubmit(),
         );
       })
       .catch((error) => {
@@ -157,10 +157,10 @@ class BaseParkForm extends Component {
       navigator.geolocation.getCurrentPosition(
         async (position) => {
           console.log(
-            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}`
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}`,
           );
           let address = await axios.get(
-            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}`
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}`,
           );
           address = address['data']['address']['city'];
           // console.log(address);
@@ -176,19 +176,19 @@ class BaseParkForm extends Component {
               },
               isLoadingLocation: false,
             },
-            () => this.onSubmit()
+            () => this.onSubmit(),
           );
           if (window.google) {
             this.props.googleMap.panTo(
               new window.google.maps.LatLng(
                 position.coords.latitude,
-                position.coords.longitude
-              )
+                position.coords.longitude,
+              ),
             );
           }
           this.props.authState.setUserLocation(
             position.coords.latitude,
-            position.coords.longitude
+            position.coords.longitude,
           );
         },
         (error) => {
@@ -201,15 +201,15 @@ class BaseParkForm extends Component {
             isLoadingLocation: false,
           });
         },
-        { enableHighAccuracy: true }
+        { enableHighAccuracy: true },
       );
     } else {
       if (window.google && this.props.googleMap) {
         this.props.googleMap.panTo(
           new window.google.maps.LatLng(
             this.props.authState.userLocation.lat,
-            this.props.authState.userLocation.lng
-          )
+            this.props.authState.userLocation.lng,
+          ),
         );
       }
       let address = null;
@@ -224,7 +224,7 @@ class BaseParkForm extends Component {
           },
           isLoadingLocation: false,
         },
-        () => this.onSubmit()
+        () => this.onSubmit(),
       );
     }
   };
@@ -270,7 +270,7 @@ class BaseParkForm extends Component {
         this.convertReqToFloat({
           ...this.state.reqData,
           utime: d.getTime(),
-        })
+        }),
       );
     } else {
       this.setState({ formErrors: errors });
@@ -299,10 +299,10 @@ class BaseParkForm extends Component {
     ) {
       this.props.history.push(
         `/search?lat=${parseFloat(reqData.lat).toFixed(4)}&lng=${parseFloat(
-          reqData.lng
+          reqData.lng,
         ).toFixed(4)}&dist=${reqData.dist}&lightpol=${parseFloat(
-          reqData.lightpol
-        ).toFixed(2)}`
+          reqData.lightpol,
+        ).toFixed(2)}`,
       );
     } else {
     }
@@ -591,233 +591,232 @@ const ParkForm = (parkFormProps) => (
 export default withRouter(ParkForm);
 
 const SearchFormStyle = styled.div`
-	background: none;
+  background: none;
 
-	font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
 
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-template-rows: ${(props) =>
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: ${(props) =>
     props.advancedSearch ? `auto auto auto` : `auto auto`};
-	grid-gap: 10px;
-	grid-template-areas:
-"messageAboveForm messageAboveForm messageAboveForm"
-		"searchBar searchBar searchBar"
-	
-		"advancedSearchToggle advancedSearchToggle myLocation"
-		${(props) =>
+  grid-gap: 10px;
+  grid-template-areas:
+    'messageAboveForm messageAboveForm messageAboveForm'
+    'searchBar searchBar searchBar'
+    'advancedSearchToggle advancedSearchToggle myLocation'
+    ${(props) =>
       props.advancedSearch
         ? `"advancedSearch advancedSearch advancedSearch"`
         : ``};
 
-	@media screen and (min-width: 320) {
-		grid-template-areas:
-"messageAboveForm messageAboveForm messageAboveForm"
-			"searchBar searchBar myLocation"
-			"advancedSearchToggle advancedSearchToggle advancedSearchToggle"
-			${(props) =>
+  @media screen and (min-width: 320) {
+    grid-template-areas:
+      'messageAboveForm messageAboveForm messageAboveForm'
+      'searchBar searchBar myLocation'
+      'advancedSearchToggle advancedSearchToggle advancedSearchToggle'
+      ${(props) =>
         props.advancedSearch
           ? `"advancedSearch advancedSearch advancedSearch"`
           : ``};
-	}
+  }
 
-	@media screen and (min-width: 480px) {
-		grid-template-areas:
-		"messageAboveForm messageAboveForm messageAboveForm"
-			"searchBar searchBar myLocation"
-			"advancedSearchToggle advancedSearchToggle advancedSearchToggle"
-			${(props) =>
+  @media screen and (min-width: 480px) {
+    grid-template-areas:
+      'messageAboveForm messageAboveForm messageAboveForm'
+      'searchBar searchBar myLocation'
+      'advancedSearchToggle advancedSearchToggle advancedSearchToggle'
+      ${(props) =>
         props.advancedSearch
           ? `"advancedSearch advancedSearch advancedSearch"`
           : ``};
-	}
+  }
 
-	.messageAboveForm{
-		grid-area: messageAboveForm;
-		text-align: left;
-		font-weight: 600;
-		animation: fadein 3s;
-			@keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
+  .messageAboveForm {
+    grid-area: messageAboveForm;
+    text-align: left;
+    font-weight: 600;
+    animation: fadein 3s;
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
 
+    .invalidLocation {
+      color: ${(props) => props.theme.colorBad};
+    }
+    .generic {
+      color: ${(props) => props.theme.yellow};
+      font-family: 'Reenie Beanie', cursive;
+      font-size: larger;
+    }
+  }
 
+  .AdvancedSearch {
+    width: 90%;
+    margin: auto auto;
+    ${(props) => (props.advancedSearch ? `` : `display: none`)}
+    grid-area:advancedSearch;
 
-		.invalidLocation{
-			color: ${(props) => props.theme.colorBad};
-		}
-		.generic{
-			color: ${(props) => props.theme.yellow};
+    .FormTitle {
+      color: ${(props) => props.theme.white};
+      font-weight: 600;
+    }
+  }
 
-		}
-		
-	}
+  .myLocation {
+    color: ${(props) => props.theme.white};
+    font-size: 13px;
 
-	.AdvancedSearch {
+    .nearMe {
+      all: unset;
+      -webkit-appearance: none !important;
+      -moz-appearance: none !important;
+      appearance: none !important;
+      cursor: pointer;
 
-		width: 90%;
-		margin: auto auto;
-		${(props) => (props.advancedSearch ? `` : `display: none`)}
-		grid-area:advancedSearch;
+      background: ${(props) => props.theme.yellow};
+      border-radius: 20px;
+      height: 36px;
+      width: 100%;
+      -webkit-text-fill-color: rgba(0, 0, 0, 1);
+      -webkit-opacity: 1;
+      color: ${(props) => props.theme.prettyDark};
+      transition: color 0.1s ease;
+      font-size: 15px;
+      font-weight: 600;
 
-		.FormTitle {
-			color: ${(props) => props.theme.white};
-			font-weight: 600;
-		}
-	}
+      :disabled {
+        background: gray;
+      }
+      :hover:enabled {
+        background-color: ${(props) => props.theme.colorMedium};
+        /* color: ${(props) => props.theme.highlightPink}; */
+      }
+      :active:enabled {
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05);
+      }
+    }
+    grid-area: myLocation;
+  }
 
-	.myLocation {
-		color: ${(props) => props.theme.white};
-		font-size: 13px;
+  .advancedSearchToggle {
+    grid-area: advancedSearchToggle;
+    margin: auto 0;
+    span {
+      font-weight: 500;
+    }
 
-		.nearMe {
-			all: unset;
-			-webkit-appearance: none !important;
-			-moz-appearance: none !important;
-			appearance: none !important;
-			cursor: pointer;
+    button {
+      float: left;
+      i {
+        margin-left: 5px;
+        transform: rotate(
+          ${(props) => (props.advancedSearch ? `0deg` : `-90deg`)}
+        );
+      }
+    }
+  }
 
-			background: ${(props) => props.theme.yellow};
-			border-radius: 20px;
-			height: 36px;
-			width: 100%;
-			-webkit-text-fill-color: rgba(0, 0, 0, 1); 
-   -webkit-opacity: 1; 
-			color: ${(props) => props.theme.prettyDark};
-			transition: color 0.1s ease;
-			font-size: 15px;
-			font-weight: 600;
+  .citySearch {
+    grid-area: searchBar;
+  }
 
-			:disabled {
-				background: gray;
-			}
-			:hover:enabled {
-				background-color: ${(props) => props.theme.colorMedium};
-				/* color: ${(props) => props.theme.highlightPink}; */
-			}
-			:active:enabled {
-				-webkit-transform: scale(1.05);
-				transform: scale(1.05);
-			}
-		}
-		grid-area: myLocation;
-	}
+  .searchButton {
+    width: 40px;
+    height: 36px;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
 
-	.advancedSearchToggle {
-		grid-area: advancedSearchToggle;
-		margin: auto 0;
-		span {
-			font-weight: 500;
-		}
+    svg {
+      margin: auto auto;
 
-		button {
-			float: left;
-			i {
-				margin-left: 5px;
-				transform: rotate(
-					${(props) => (props.advancedSearch ? `0deg` : `-90deg`)}
-				);
-			}
-		}
-	}
+      display: block;
+    }
 
-	.citySearch {
-		grid-area: searchBar;
-	}
-
-	.searchButton {
-		width: 40px;
-		height: 36px;
-		-webkit-appearance: none !important;
--moz-appearance: none !important;
-appearance: none !important;
-		
-		svg{
-			margin: auto auto;
-
-display: block;
-		}
-
-		background: ${(props, isInvalidLocation) =>
+    background: ${(props, isInvalidLocation) =>
       isInvalidLocation ? props.theme.highlightPink : props.theme.prettyDark};
-		text-align: center;
+    text-align: center;
 
-		color: ${(props) => props.theme.white};
+    color: ${(props) => props.theme.white};
 
-		cursor: pointer;
-		font-size: 20px;
-		border: 2px solid #2a2c2d;
-		float: left;
-		background-position: center;
-		transition: background 0.2s, color 0.1s ease;
+    cursor: pointer;
+    font-size: 20px;
+    border: 2px solid #2a2c2d;
+    float: left;
+    background-position: center;
+    transition: background 0.2s, color 0.1s ease;
 
-		:focus {
-			outline: 0;
-		}
+    :focus {
+      outline: 0;
+    }
 
-		:hover {
-			background: ${(props) => props.theme.prettyDark}
-				radial-gradient(circle, transparent 1%, rgba(0, 0, 0, 0.3) 1%)
-				center/15000%;
-			color: ${(props) => props.theme.colorMedium};
-		}
+    :hover {
+      background: ${(props) => props.theme.prettyDark}
+        radial-gradient(circle, transparent 1%, rgba(0, 0, 0, 0.3) 1%)
+        center/15000%;
+      color: ${(props) => props.theme.colorMedium};
+    }
 
-		:active {
-			background-color: rgba(0, 0, 0, 0.3);
-			background-size: 100%;
-			transition: background 0s;
-		}
-	}
+    :active {
+      background-color: rgba(0, 0, 0, 0.3);
+      background-size: 100%;
+      transition: background 0s;
+    }
+  }
 
+  .searchTerm {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    border-radius: 0;
 
-	.searchTerm {
-		-webkit-appearance: none !important;
-			-moz-appearance: none !important;
-			appearance: none !important;
-			border-radius:0;
-	
-		width: calc(100% - 40px);
-		background-color: ${(props) => props.theme.darkAccent};
-		transition: background-color 0.1s ease;
+    width: calc(100% - 40px);
+    background-color: ${(props) => props.theme.darkAccent};
+    transition: background-color 0.1s ease;
 
-		padding: 5px;
-		height: 36px;
+    padding: 5px;
+    height: 36px;
 
-		outline: none;
-		color: ${(props) => props.theme.white};
-		border: none;
-		float: left;
+    outline: none;
+    color: ${(props) => props.theme.white};
+    border: none;
+    float: left;
 
-		:focus {
-		color: ${(props) => props.theme.white};
-	}
+    :focus {
+      color: ${(props) => props.theme.white};
+    }
 
-		:hover,
-		:active {
-			background-color: ${(props) => props.theme.moonBackground};
-			transition: background-color 0.1s ease;
-		}
+    :hover,
+    :active {
+      background-color: ${(props) => props.theme.moonBackground};
+      transition: background-color 0.1s ease;
+    }
 
-		::placeholder {
-			font-weight: 300;
-			opacity: 0.5;
-		}
-	}
+    ::placeholder {
+      font-weight: 300;
+      opacity: 0.5;
+    }
+  }
 
-	.ToggleAdvancedSearch {
-		all: unset;
-		-webkit-text-fill-color: #bdbdbd;
-   -webkit-opacity: 1; 
-		
-		cursor: pointer;
-		color: #bdbdbd;
-		:hover,
-		:active {
-			color: ${(props) => props.theme.colorMedium};
-			transition: color 0.2s ease;
-		}
-	}
+  .ToggleAdvancedSearch {
+    all: unset;
+    -webkit-text-fill-color: #bdbdbd;
+    -webkit-opacity: 1;
+
+    cursor: pointer;
+    color: #bdbdbd;
+    :hover,
+    :active {
+      color: ${(props) => props.theme.colorMedium};
+      transition: color 0.2s ease;
+    }
+  }
 `;
 
 const SliderStyle = styled.div`

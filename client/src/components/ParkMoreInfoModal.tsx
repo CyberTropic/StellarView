@@ -1,6 +1,5 @@
 import React, { Component, useState } from 'react';
 import Modal from 'react-modal';
-import Reviews from './Reviews';
 import FavPark from './FavPark';
 import styled from 'styled-components';
 import './modal.css';
@@ -13,10 +12,7 @@ import lightPolIcon from './style/Media/cardIcons/lightPol.svg';
 import ReportPark from './ReportPark';
 import CountUp from 'react-countup';
 import { withRouter } from 'react-router-dom';
-import {
-  notifyInfoModalIsOpen,
-  notifyInfoModalIsClosed,
-} from './MainComponent';
+
 import ee from 'eventemitter3';
 
 const emitter = new ee();
@@ -107,7 +103,7 @@ class ParkMoreInfoModal extends Component {
     this.setState({ modalIsOpen: true });
     notifyInfoModalIsOpen();
     this.props.history.push(
-      `${window.location.pathname}${window.location.search}#modal`
+      `${window.location.pathname}${window.location.search}#modal`,
     );
   };
 
@@ -120,7 +116,7 @@ class ParkMoreInfoModal extends Component {
     notifyInfoModalIsClosed();
     this.props.history.push(
       `${window.location.pathname}${window.location.search}`,
-      null
+      null,
     );
     this.setState({ modalIsOpen: false });
   };
@@ -137,7 +133,7 @@ class ParkMoreInfoModal extends Component {
     navigator.geolocation.getCurrentPosition((position) => {
       window.open(
         `https://www.google.com/maps?saddr=${position.coords.latitude},${position.coords.longitude}&daddr=${this.park.lat},${this.park.lng}`,
-        '_blank'
+        '_blank',
       );
     });
   };
@@ -407,15 +403,7 @@ class ParkMoreInfoModal extends Component {
             </div>
 
             <div className="reviewsContainer">
-              {this.toRemountReviews ? (
-                this.remountReviews()
-              ) : (
-                <Reviews
-                  starSize={'14px'}
-                  refreshInfoModal={this.refreshModal}
-                  parkID={this.park.id}
-                />
-              )}
+              {this.toRemountReviews ? this.remountReviews() : ''}
             </div>
           </div>
         </ModalStyle>

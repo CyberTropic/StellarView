@@ -298,7 +298,7 @@ class Tutorial extends Component {
           {this.props.children ? (
             <React.Fragment>{this.props.children}</React.Fragment>
           ) : (
-            'Tutorial'
+            'View Tutorial or'
           )}
         </a>
 
