@@ -312,7 +312,7 @@ const NoResultsStyle = styled.div`
     text-shadow: none;
     color: ${(props) => props.theme.white};
     position: absolute;
-    top: 4px;
+    top: -1px;
     right: 4px;
     float: right;
     font-size: 2rem;
