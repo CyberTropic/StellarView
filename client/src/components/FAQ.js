@@ -54,11 +54,15 @@ const FAQ = (props) => (
           Ontario. Inspired by Evan Reaume, Stellargaze hopes to simplify the
           stargazing process. The front-end and back-end was fully implemented
           by both{" "}
-          <a href="http://www.dustinjurkaulionis.com" target="_blank">
+          <a
+            href="http://www.dustinjurkaulionis.com"
+            rel="noreferrer"
+            target="_blank"
+          >
             Dustin Jurkaulionis
           </a>{" "}
           and{" "}
-          <a href="http://www.vladfalach.com" target="_blank">
+          <a href="http://www.vladfalach.com" rel="noreferrer" target="_blank">
             Vlad Falach
           </a>{" "}
           over the Summer of 2019 as their first full-scale web application. It
@@ -92,6 +96,7 @@ const FAQ = (props) => (
               <a
                 href="https://en.wikipedia.org/wiki/Bortle_scale"
                 target="_blank"
+                rel="noreferrer"
               >
                 Bortle scale
               </a>
@@ -116,7 +121,7 @@ const FAQ = (props) => (
             </li>
           </ol>
           <figure>
-            <a href={ParkMapNA} target="_blank">
+            <a href={ParkMapNA} rel="noreferrer" target="_blank">
               <img
                 src={ParkMapNA}
                 alt="Stored parks, coloured according to light pollution, lighter=more light pollution"
@@ -133,7 +138,7 @@ const FAQ = (props) => (
           below, cloud coverage below 25%, humidity below 70%, and a moon phase
           below 50% illumination (First Quarter and below, for instance).
           <figure>
-            <a href={lightPolMapDemo} target="_blank">
+            <a href={lightPolMapDemo} rel="noreferrer" target="_blank">
               <img
                 src={lightPolMapDemo}
                 alt="Stored parks, coloured according to light pollution, lighter=more light pollution"
@@ -143,7 +148,11 @@ const FAQ = (props) => (
               Figure 2: User searching from a high light pollution zone (inner
               city). Stellargaze directs them to parks in less polluted areas
               (green) such as this one. Source:{" "}
-              <a href="https://www.lightpollutionmap.info" target="_blank">
+              <a
+                href="https://www.lightpollutionmap.info"
+                rel="noreferrer"
+                target="_blank"
+              >
                 https://www.lightpollutionmap.info
               </a>
             </figcaption>
@@ -172,7 +181,7 @@ const FAQ = (props) => (
             another python script.
           </p>
           <figure>
-            <a href={QGISModel} target="_blank">
+            <a href={QGISModel} rel="noreferrer" target="_blank">
               <img src={QGISModel} alt="QGIS Graphical Process Modeler" />
             </a>
             <figcaption>Figure 3: QGIS Graphical Process Modeler</figcaption>
@@ -225,7 +234,7 @@ const FAQ = (props) => (
             cluster share the same forecast.
           </p>
           <figure>
-            <a href={WeatherEstimation} target="_blank">
+            <a href={WeatherEstimation} rel="noreferrer" target="_blank">
               <img src={WeatherEstimation} alt="Weather Estimation Test" />
             </a>
             <figcaption>Figure 4: Weather Estimation Test</figcaption>
@@ -301,6 +310,7 @@ const FAQ = (props) => (
               Nighttime Lights images via the{" "}
               <a
                 target="_blank"
+                rel="noreferrer"
                 href="https://eogdata.mines.edu/download_dnb_composites.html"
               >
                 Earth Observations Group (EOG)
@@ -310,32 +320,48 @@ const FAQ = (props) => (
             <li>
               Band value numbers for the radiance corresponding to a Bortle
               number provided by Jurij Stare of{" "}
-              <a target="_blank" href="https://www.lightpollutionmap.info/">
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.lightpollutionmap.info/"
+              >
                 lightpollutionmap.info
               </a>
             </li>
             <li>
               Moonrise/moonset and sunrise/sunset data provided by{" "}
-              <a target="_blank" href="http://suncalc.net">
+              <a target="_blank" rel="noreferrer" href="http://suncalc.net">
                 Suncalc
               </a>
             </li>
             <li>
               OpenStreetMap data gathered via{" "}
-              <a target="_blank" href="https://github.com/3liz/QuickOSM">
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://github.com/3liz/QuickOSM"
+              >
                 QuickOSM
               </a>{" "}
               plugin.
             </li>
             <li>
               Telescope animation in homepage adapted based on a Codepen by{" "}
-              <a target="_blank" href="https://codepen.io/littleginger">
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://codepen.io/littleginger"
+              >
                 @littleginger
               </a>
             </li>
             <li>
               404 page astronaut animation adapted based on a Codepen by{" "}
-              <a target="_blank" href="https://codepen.io/hellochad">
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://codepen.io/hellochad"
+              >
                 @hellochad
               </a>
             </li>
@@ -350,7 +376,11 @@ const FAQ = (props) => (
           is continuously being improved so any advice and/or feedback would be
           greatly appreciated. Please email us at{" "}
           <a href="mailto:dev@stellargaze.com">dev@stellargaze.com</a> and{" "}
-          <a target="_blank" href="https://github.com/CyberTropic/StellarGaze">
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://github.com/CyberTropic/StellarGaze"
+          >
             visit the repo.
           </a>
           {"   "}Please note the code is old as it was our first experience with

@@ -29,7 +29,7 @@ const modalStyle = {
     right: 0,
     bottom: 0,
     backgroundColor: "rgba(0,0,0,0.9)",
-    transition: "opacity 400ms ease-in-out",
+    transition: "opacity 150ms ease-in-out",
   },
   content: {
     top: "50%",
@@ -141,7 +141,7 @@ class ParkMoreInfoModal extends Component {
   render() {
     return (
       <Modal
-        closeTimeoutMS={200}
+        closeTimeoutMS={150}
         isOpen={this.state.modalIsOpen}
         onAfterOpen={this.afterOpenModal}
         onRequestClose={this.closeModal}
@@ -166,6 +166,7 @@ class ParkMoreInfoModal extends Component {
             </button>
           </div>
           <div className="ContentGrid">
+            <span className="tap">Tap for info</span>
             <div className="weatherContainer">
               <div className="visibilityContainer">
                 <Card
@@ -448,11 +449,10 @@ const ModalStyle = styled.div`
       font-weight: 500;
       color: ${(props) => props.theme.white};
       text-align: left;
-      padding: 1.5rem 1rem;
+      padding: 1.5rem 0rem;
       display: flex;
       grid-area: ParkTitle;
       font-size: 22px;
-      margin: auto auto;
       line-height: 30px;
     }
 
@@ -466,8 +466,8 @@ const ModalStyle = styled.div`
       text-shadow: none;
       color: ${(props) => props.theme.white};
       position: absolute;
-      top: 4px;
-      right: 4px;
+      top: 15px;
+      right: 15px;
       float: right;
       font-size: 2rem;
       font-weight: 600;
@@ -492,6 +492,13 @@ const ModalStyle = styled.div`
     height: 100%;
     overflow-y: auto;
     background: ${(props) => props.theme.prettyDark};
+
+    .tap {
+      color: ${(props) => props.theme.white};
+      text-align: left;
+    padding-bottom: 1rem;
+}
+    }
 
     .textContainer {
       grid-area: infoText;
@@ -547,7 +554,6 @@ const ModalStyle = styled.div`
           position: absolute;
           width: 100%;
           background-color: ${(props) => props.theme.cardDark};
-          border-radius: 20px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -582,7 +588,6 @@ const ModalStyle = styled.div`
           position: absolute;
           width: 100%;
           background-color: ${(props) => props.theme.cardLight};
-          border-radius: 20px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -612,7 +617,6 @@ const ModalStyle = styled.div`
           justify-content: center;
           width: 100%;
           background-color: ${(props) => props.theme.cardLight};
-          border-radius: 20px;
         }
       }
       .lightPolContainer {
@@ -634,7 +638,6 @@ const ModalStyle = styled.div`
           justify-content: center;
           width: 100%;
           background-color: ${(props) => props.theme.cardDark};
-          border-radius: 20px;
         }
       }
       .moonContainer {
@@ -656,7 +659,6 @@ const ModalStyle = styled.div`
           justify-content: center;
           width: 100%;
           background-color: ${(props) => props.theme.cardDark};
-          border-radius: 20px;
         }
 
         .MoonDisplayContainer {
@@ -683,7 +685,6 @@ const ModalStyle = styled.div`
           justify-content: center;
           width: 100%;
           background-color: ${(props) => props.theme.cardLight};
-          border-radius: 20px;
         }
       }
     }

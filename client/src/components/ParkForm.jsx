@@ -122,7 +122,6 @@ class BaseParkForm extends Component {
         );
       })
       .catch((error) => {
-        console.log(error);
         this.setState({
           ...this.state,
           isGeocodingLocation: false,
@@ -600,7 +599,6 @@ const SearchFormStyle = styled.div`
       cursor: pointer;
 
       background: ${(props) => props.theme.yellow};
-      border-radius: 20px;
       height: 36px;
       width: 100%;
       -webkit-text-fill-color: rgba(0, 0, 0, 1);
