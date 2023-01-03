@@ -247,7 +247,7 @@ class Tutorial extends Component {
         </a>
 
         <Modal
-          closeTimeoutMS={600}
+          closeTimeoutMS={150}
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
@@ -271,7 +271,7 @@ const customStyles = {
     right: 0,
     bottom: 0,
     backgroundColor: "rgba(0,0,0,0.9)",
-    transition: "opacity 400ms ease-in-out",
+    transition: "opacity 200ms ease-in-out",
   },
   content: {
     top: "50%",
@@ -382,7 +382,6 @@ const TutorialStyle = styled.div`
         appearance: none;
 
         background: ${(props) => props.theme.yellow};
-        border-radius: 20px;
         height: 36px;
         width: 100%;
         color: ${(props) => props.theme.prettyDark};

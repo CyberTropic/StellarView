@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 export default function MoonDisplay({ phase }) {
   phase = phase * 100;
@@ -81,46 +81,29 @@ export default function MoonDisplay({ phase }) {
 }
 
 const MoonSVGStyle = styled.div`
-	.moon {
-		/* width: 90px; */
-		/* margin: 2rem auto; */
-		transform: scaleX(${(props) => props.phaseFlip});
-
-		/* ${({ isHomeMoon }) =>
-      isHomeMoon && 'box-shadow: 0 0 20px #485261; border-radius:100px;'}; */
-  /* border-radius:100px;
-  box-shadow: 0 0 20px #485261; */
-		/* @keyframes glowing {
-  0% { box-shadow: -10 -10px #485261; }
-  40% { box-shadow: 0 0 20px #485261; }
-  60% { box-shadow: 0 0 20px #485261; }
-  100% { box-shadow: -10 -10px #485261; }
-}
-  animation: glowing 6000ms infinite; */
-
-	}
-	.moon-left,
-	.moon-right {
-		display: inline-block;
-		width: 50%;
-		position: relative;
-		margin: 0;
-	}
-	.moon-left .bg,
-	.moon-right .bg {
-		/* stroke-width: 2px; */
-	}
-	.moon-right .fg {
-		/* stroke-width: 2px; */
-		transform: scaleX(${(props) => props.phaseRight});
-	}
-	.moon-left .bg {
-		fill: ${(props) => props.theme.prettyDark};
-	}
-	.moon-left .fg {
-		fill: ${(props) => props.theme.white};
-		transform-origin: 0% 0%;
-		transform: translate(${(props) => props.phaseTrans}px, 0)
-			scaleX(${(props) => 1 - props.phaseScale});
-	}
+  .moon {
+    transform: scaleX(${(props) => props.phaseFlip});
+  }
+  .moon-left,
+  .moon-right {
+    display: inline-block;
+    width: 50%;
+    position: relative;
+    margin: 0;
+  }
+  .moon-left .bg,
+  .moon-right .bg {
+  }
+  .moon-right .fg {
+    transform: scaleX(${(props) => props.phaseRight});
+  }
+  .moon-left .bg {
+    fill: ${(props) => props.theme.prettyDark};
+  }
+  .moon-left .fg {
+    fill: ${(props) => props.theme.white};
+    transform-origin: 0% 0%;
+    transform: translate(${(props) => props.phaseTrans}px, 0)
+      scaleX(${(props) => 1 - props.phaseScale});
+  }
 `;

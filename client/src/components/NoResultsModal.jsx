@@ -162,7 +162,7 @@ class NoResultsModal extends Component {
     return (
       <React.Fragment>
         <Modal
-          closeTimeoutMS={400}
+          closeTimeoutMS={150}
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
@@ -190,7 +190,7 @@ const customStyles = {
     right: 0,
     bottom: 0,
     backgroundColor: "rgba(0,0,0,0.9)",
-    transition: "opacity 400ms ease-in-out",
+    transition: "opacity 150ms ease-in-out",
   },
   content: {
     top: "50%",
@@ -253,8 +253,6 @@ const NoResultsStyle = styled.div`
     display: block;
     margin: auto auto;
     background: ${(props) => props.theme.moonBackground};
-
-    border-radius: 20px;
 
     padding: 20px 10px;
     max-width: 450px;
