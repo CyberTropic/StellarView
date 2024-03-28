@@ -1,7 +1,7 @@
-const axios = require('axios');
-const suncalc = require('suncalc');
-const clustering = require('density-clustering');
-const geolib = require('geolib');
+const axios = require("axios");
+const suncalc = require("suncalc");
+const clustering = require("density-clustering");
+const geolib = require("geolib");
 
 async function getClusterParkWeatherData(parkDataJSON, userTime, weatherKey1) {
   var parkCoordinates = [];
@@ -20,7 +20,16 @@ async function getClusterParkWeatherData(parkDataJSON, userTime, weatherKey1) {
   var kmeans = new clustering.KMEANS();
   var clusterCount = Math.round(parkDataJSON.length / 5); //TODO: Find a better cluster number
   if (clusterCount > 10) clusterCount = 10;
-  var clusters = kmeans.run(parkCoordinates, clusterCount, kmeansDistance);
+  var parkCoordinatesNumeric = parkCoordinates.map((coord) => [
+    parseFloat(coord[0]),
+    parseFloat(coord[1]),
+  ]);
+
+  var clusters = kmeans.run(
+    parkCoordinatesNumeric,
+    clusterCount,
+    kmeansDistance
+  );
   //Find coordinates at the center of each cluster
   let clusterCentroids = [];
   for (var clusterNum = 0; clusterNum < clusters.length; clusterNum++) {

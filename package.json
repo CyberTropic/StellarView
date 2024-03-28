@@ -27,7 +27,7 @@
     "express-mysql-session": "^2.1.4",
     "express-session": "^1.17.1",
     "express-validator": "^5.3.1",
-    "geolib": "^3.2.1",
+    "geolib": "^3.3.4",
     "heroku-ssl-redirect": "0.0.4",
     "material-ui": "^1.0.0-beta.47",
     "morgan": "^1.10.0",
